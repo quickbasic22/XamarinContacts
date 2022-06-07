@@ -10,7 +10,7 @@ namespace XamarinContacts
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ListViewDemoPage();
         }
 
         protected override void OnStart()
