@@ -1,19 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:XE="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
              x:Class="XamarinContacts.MainPage"
+             x:Name="MyMainPage"
              Title="Contacts List">
 
     <ListView x:Name="MyListView">
+        <ListView.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+                <x:String>Item 1</x:String>
+                <x:String>Item 2</x:String>
+                <x:String>Item 3</x:String>
+            </x:Array>
+        </ListView.ItemsSource>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <StackLayout x:DataType="XE:Contact">
-                    <Label x:Name="FirstName" Text="{Binding GivenName}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36" />
-                    <Label x:Name="LastName" Text="{Binding FamilyName}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36" />
-                    <Label x:Name="Phone" Text="{Binding MiddleName}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36" />
-                    <Button x:Name="PopulateContacts" FontSize="Large" Text="Populate Contacts" Clicked="PopulateContacts_Clicked" />
-                </StackLayout>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout>
+                            <Label Text="{Binding .}" />
+                            <Button Text="Set Binding" Clicked="PopulateContacts_Clicked" />
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
